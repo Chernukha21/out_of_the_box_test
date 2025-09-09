@@ -4,7 +4,7 @@ import ParallaxTooltips from "./ParallaxTooltips.tsx";
 import {markers} from "../lib/helpers.ts";
 import type {Marker} from "../lib/helpers.ts";
 
-type Props = { bgVideoRef: MutableRefObject<HTMLVideoElement> };
+type Props = { bgVideoRef: MutableRefObject<HTMLVideoElement | null> };
 
 function Sections({ bgVideoRef }: Props) {
     const root = useRef<HTMLDivElement>(null);

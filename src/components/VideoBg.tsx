@@ -1,6 +1,6 @@
-import type {MutableRefObject} from "react";
+import type { MutableRefObject } from "react";
 
-type Props = { videoRef: MutableRefObject<HTMLVideoElement | null> };
+type Props = { videoRef: MutableRefObject<HTMLVideoElement | null> }; // ✅
 
 export default function VideoBg({ videoRef }: Props) {
     return (

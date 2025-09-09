@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import {useRef} from "react";
 import VideoBg from "./components/VideoBg";
 import Sections from "./components/Sections";
 

@@ -1,0 +1,278 @@
+:root {
+    --fg: #e6f2ef;
+    --accent: #00f5ff;
+    --tipBg: #0f1a19;
+    --tipBd: #1e3a36;
+    --font: 'Roboto', system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+html, body, #root {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--fg);
+}
+
+.video-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(80% 60% at 50% 50%, rgba(0, 0, 0, 0), rgba(0, 0, 0, .55));
+}
+
+
+.panel {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2.4rem, 7vw, 8rem);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: clamp(1.6rem, 5vw, 4rem);
+    letter-spacing: .06em;
+}
+
+.copy {
+    max-width: 60ch;
+    opacity: .9;
+    margin: 1rem auto 0;
+    padding: 0 1rem;
+}
+
+.ps {
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+}
+
+.ps__wrap {
+    position: relative;
+    width: min(1200px, 92vw);
+    height: min(720px, 78vh);
+}
+
+.ps__title {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    font-size: clamp(1.6rem, 3.6vw, 3rem);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-align: center;
+    pointer-events: none;
+}
+
+/* центр */
+.ps__center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.ps__image {
+    width: min(60vw, 560px);
+    height: auto;
+    filter: drop-shadow(0 6px 30px rgba(0, 0, 0, .6));
+    will-change: transform;
+    animation: spin 10s linear infinite, float 3s ease-in-out infinite;
+}
+
+.ps__glow {
+    position: absolute;
+    width: 60%;
+    height: 38%;
+    bottom: 14%;
+    left: 50%;
+    translate: -50% 0;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(142, 247, 230, .16), rgba(0, 0, 0, 0));
+    filter: blur(16px);
+}
+
+/* маркеры */
+.ps__markers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ps__marker {
+    position: absolute;
+    left: 0;
+    color: var(--fg);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.ps__marker.right {
+    right: 0;
+    left: auto;
+    flex-direction: row-reverse;
+}
+
+.ps__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(142, 247, 230, .5);
+    transition: box-shadow .3s ease, transform .2s ease;
+    outline: none;
+}
+
+.ps__dot:hover, .ps__dot:focus-visible {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(142, 247, 230, .12);
+}
+
+
+.ps__tip {
+    position: relative;
+    max-width: min(280px, 60vw);
+    background: rgba(255, 255, 255, .2);
+    border: 2px solid var(--accent);
+    padding: .75rem .9rem;
+    border-radius: 12px;
+    font: 400 .95rem/1.35 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+
+.ps__tip strong {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+.ps__tip p {
+    margin: 0;
+    opacity: .9;
+}
+
+
+.ps__marker.left .ps__tip::after,
+.ps__marker.right .ps__tip::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    border-left: inherit;
+    border-top: inherit;
+    transform: rotate(45deg);
+}
+
+.ps__marker.left .ps__tip::after {
+    right: -5px;
+}
+
+.ps__marker.right .ps__tip::after {
+    left: -5px;
+}
+
+
+.ps__marker:hover .ps__tip,
+.ps__marker:focus-within .ps__tip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+    .ps__wrap {
+        height: min(760px, 84vh);
+    }
+
+    .ps__image {
+        width: min(72vw, 520px);
+    }
+
+    .ps__dot {
+        width: 18px;
+        height: 18px;
+    }
+
+    .ps__marker {
+        gap: .6rem;
+    }
+}
+
+
+.planet img {
+    width: 100%;
+    height: auto;
+    animation: spin 10s linear infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+    [data-speed] {
+        transform: none !important;
+    }
+
+    .ps__tip {
+        transition: none;
+    }
+}
+
+

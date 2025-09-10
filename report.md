@@ -1,6 +1,6 @@
 # Zero Limits — Cinematic UI (Trial)
 
-**Live:** https://your-app.vercel.app
+**Live:** https://vercel.com/chernukha21s-projects/out-of-the-box-test
 
 ## Stack
 React + Vite • GSAP ScrollTrigger • CSS (tooltips, parallax)
